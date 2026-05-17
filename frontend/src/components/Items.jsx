@@ -23,7 +23,7 @@ const Items = () => {
     const fetchData = async () => {
       dispatch(setStatus("loading"));
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/items`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/items`);
         dispatch(setItems(response.data));
         dispatch(setStatus("succeeded"));
       } catch (err) {
@@ -45,6 +45,7 @@ const Items = () => {
           domLayout="autoHeight"
           pagination= {true}
           paginationPageSize={10}
+          paginationPageSizeSelector={[10, 20, 50, 100]}
         />
       )}
     </div>
